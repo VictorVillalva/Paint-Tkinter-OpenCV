@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import colorchooser
 
 ventana = Tk()
 ventana.title('Paint')
@@ -21,11 +22,18 @@ options = [1,5,10,15,20]
 
 def pencil():
     strokeColor.set('black')
-
-
 def eraser():
     strokeColor.set('white')
     canvas["cursor"] = DOTBOX
+
+def selectColor():
+    selectedColor =  colorchooser.askcolor('red', title='Seleccionar Color')
+
+    if selectedColor[1] == None:
+        strokeColor.set('black')
+    else:
+        strokeColor.set(selectedColor[1])
+
 
 def paint(e):
     global initialPoint,finalPoint
@@ -49,7 +57,7 @@ section1 = Frame(ventana, height=100, width=1100)
 section1.grid(row=0,column=0,sticky=NW)
 
 # Frame - Herramientas
-toolsFrame = Frame(section1, height=100, width=100)
+toolsFrame = Frame(section1, height=100, width=100,relief=SUNKEN, borderwidth=3)
 toolsFrame.grid(row=0,column=0)
 
 pencilButton = Button(toolsFrame, text="Lapiz", width=10, command=pencil)
@@ -61,8 +69,8 @@ eraserButton.grid(row=1,column=0)
 toolsLabel = Label(toolsFrame, text="Herramientas", width=10)
 toolsLabel.grid(row=3,column=0)
 
-# Frame - Tamaño
-sizeFrame = Frame(section1, height=100, width=100)
+# Frame - Tamaños
+sizeFrame = Frame(section1, height=100, width=100, relief=SUNKEN, borderwidth=3)
 sizeFrame.grid(row=0,column=1)
 
 defaultButton = Button(sizeFrame, text='Default', width=10, command=pencil)
@@ -73,6 +81,13 @@ sizeList.grid(row=1, column=0)
 
 sizeLabel = Label(sizeFrame, text="Tamaño", width=10)
 sizeLabel.grid(row=2,column=0)
+
+# Frame - Colores
+colorFrame = Frame(section1, height=100, width=100, relief=SUNKEN, borderwidth=3)
+colorFrame.grid(row=0, column=2)
+
+colorBoxButton = Button(colorFrame, text='Seleccionar Color', width=15, command=selectColor)
+colorBoxButton.grid(row=0, column=0)
 
 
 # Section 2 - Canvas
