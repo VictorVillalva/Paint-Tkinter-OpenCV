@@ -61,7 +61,7 @@ eraserButton.grid(row=1,column=0)
 toolsLabel = Label(toolsFrame, text="Herramientas", width=10)
 toolsLabel.grid(row=3,column=0)
 
-# Frame - Tamaños
+# Frame - Tamaño
 sizeFrame = Frame(section1, height=100, width=100)
 sizeFrame.grid(row=0,column=1)
 
