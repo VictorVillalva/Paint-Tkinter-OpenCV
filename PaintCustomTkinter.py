@@ -1,4 +1,5 @@
 from tkinter import colorchooser
+import cv2
 from PIL import Image
 
 import customtkinter
